@@ -1,21 +1,51 @@
 {% extends "base.html" %}
-{% load static %}
+{% comment %} {% load static %} {% endcomment %}
+{% load wagtailimages_tags %}
 
-{% block body_class %}template-homepage{% endblock %}
-
-{% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
 
 {% block content %}
+<main>
+    <div class="container py-4">
+      {% comment %} <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+          <span class="fs-4">{{page.title}}</span>
+        </a>
+      </header> {% endcomment %}
+  
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">{{page.title}}</h1>
+          <p class="col-md-8 fs-4">{{page.description}}</p>
+          <button class="btn btn-primary btn-lg" type="button">{{page.button_text}}</button>
+          
+        </div>
+      </div>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+            <h2>{{page.titre_leftdown}}</h2>
+            <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more. </p>
 
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-light border rounded-3 ">
+            <picture>
+                {% image page.div_background_image fill-300x200 as div_img %}
+                <img src="{{div_img.url}}" style='width:100%; height: auto;'>
+            </picture>
+            <button class="btn btn-primary btn-lg " type="button">{{page.button_b_text}}</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  
+      
+    </body>
 {% endblock content %}
